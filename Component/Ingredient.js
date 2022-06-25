@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Ingredient.css'
 
-//props : name, category, amount, price, type: [kg, unit]
+//props : name, category, amount, price, type: enum('kg', 'unit')
 
 export default function Ingredient(props) {
 

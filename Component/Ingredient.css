@@ -1,0 +1,19 @@
+.ingredient {
+    margin: 5px;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--main-color);
+    color: var(--ternary-color);
+    font-family: 'Brush Script MT', cursive;
+    width:auto;
+
+    border-radius: 10px;
+}
+
+.ingredient-infos .name {
+    font-size: large;
+    font-weight:bolder;
+}
+
+.ingredient-infos .category {
+    color: var(--grey);
+}
