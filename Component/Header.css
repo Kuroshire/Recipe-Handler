@@ -1,0 +1,20 @@
+.header {
+    --height: 40px;
+    --half-height: 20px;
+    --quarter-height: 10px;
+
+
+    background-color: var(--secondary-color);
+    border: 3px solid var(--main-color);
+    margin-bottom: 10px;
+
+    min-height: var(--height);
+}
+
+.week-plan-btn {
+    float: left;
+    
+    height: var(--half-height);
+    margin: var(--quarter-height);
+}
+

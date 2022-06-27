@@ -11,6 +11,9 @@ export default function FeedIngredient(props) {
                 <Ingredient name={ingredient.name} category={ingredient.category} amount={ingredient.amount} price={ingredient.price} type={ingredient.type} />
             ))}
         </div>
+    	<div className='add-ingredient'>
+			<button>Add Ingredient</button>
+    	</div>
     </div>
   )
 }

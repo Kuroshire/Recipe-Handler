@@ -1,9 +1,10 @@
-import { FeedIngredient } from "./Component";
+import { FeedIngredient, Header } from "./Component";
 import './App.css';
 
 function App() {
 
-	const list = [
+	//on recup une liste d'objets a travers un appel a l'API pour recup les elements présents dans le frigo
+	const listIngredient = [
 		{
 			"name": "Tomate",
 			"category": "Legume",
@@ -33,7 +34,19 @@ function App() {
 
   	return (
     	<div className="App">
-			<FeedIngredient list={list} />
+			<Header />
+
+			<div className="main-page">
+				<div className="Ingredients">
+					<FeedIngredient list={listIngredient} />
+				</div>
+				<div className="description">
+					description
+				</div>
+				<div className="Recipes">
+					Recettes
+				</div>
+			</div>
     	</div>
   );
 }

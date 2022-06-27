@@ -24,13 +24,16 @@ export default function Ingredient(props) {
             </div>
 
             <div className="ingredient-amount">
-                <button className="button-up-amount" onClick={() => setAmount(amount+1)}>
+                <button className="btn-amount" onClick={() => setAmount(amount+1)}>
                     +
                 </button>
                 <div className="amount">
                     {amount}
                 </div>
-                <button className="button-down-amount" onClick={() => setAmount(amount-1)}>
+                <button className="btn-amount" 
+                    onClick={() => (
+                        setAmount(Math.max(0, amount-1))
+                    )}>
                     -
                 </button>
             </div>
