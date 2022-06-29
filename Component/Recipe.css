@@ -1,0 +1,38 @@
+.recipe {
+    background-color: var(--secondary-color);
+    border: 3px solid var(--main-color);
+    color: var(--ternary-color);
+    margin: 5px;
+
+    font-family: 'Brush Script MT', cursive;
+    width:auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+
+
+    border-radius: 10px;
+}
+
+.recipe-name {
+    font-size: large;
+    font-weight:bolder;
+}
+
+.recipe-nb-ingredients {
+    color: var(--grey);
+    font-size: small;
+    font-style: italic;
+}
+
+.recipe-price {
+    margin: 10px;
+    width: 75px;
+}
+
+
+.recipe-infos, .recipe-price, .recipe-amount{
+    margin: 5px;
+}

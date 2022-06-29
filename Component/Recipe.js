@@ -1,36 +1,26 @@
 import React from 'react'
+import './Recipe.css'
 
-//props : name, category, amount, price, type: [kg, unit]
+//props : name, price, ingredients: [{ingredient, amount}]
+//price is set at creation of the recipe
 
 export default function Recipe(props) {
-  return (
-    <div className='recipe'>
-      
-        <div className="recipe-infos">
-                <div className="name">
-                    {props.name}
-                </div>
-                <div className="category">
-                    {props.category}
-                </div>
-        </div>
 
-        <div className="recipe-price">
-            {props.price} €/{props.type}
-        </div>
-
-        <div className="recipe-amount">
-            <button className="button-up-amount">
-                +
-            </button>
-            <div className="amount">
-                {props.amount}
+    return (
+        <div className='recipe'>
+        
+            <div className="recipe-infos">
+                    <div className="recipe-name">
+                        {props.name}
+                    </div>
+                    <div className="recipe-nb-ingredients">
+                        {props.ingredients.length} ingredients
+                    </div>
             </div>
-            <button className="button-down-amount">
-                -
-            </button>
+
+            <div className="recipe-price">
+                {props.price} €
+            </div>
         </div>
-      
-    </div>
   )
 }

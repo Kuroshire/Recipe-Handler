@@ -20,7 +20,7 @@ export default function Ingredient(props) {
             </div>
 
             <div className="ingredient-price">
-                {props.price} €/{props.type}
+                {Number(props.price).toFixed(2)} €/{props.type}
             </div>
 
             <div className="ingredient-amount">
