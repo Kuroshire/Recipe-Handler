@@ -1,21 +1,76 @@
-import { FeedIngredient, FeedRecipe, Header } from "./Component";
+import { FeedIngredient, FeedRecipe, Description, Header } from "./Component";
 import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
 
 	//region FUNCTION ---------------------------------------------------------------------------------------------
-	const addIngredient = () => {
-		let newIngredient = 
-		{
-			"name": "Tomate",
-			"category": "Legume",
-			"amount": 3,
-			"price": 1.80,
-			"type": "kg"
+	const addIngredient = (name, category, amount, price,type) => {
+
+		//not tested yet.
+
+		let inList = false
+		const newList = listIngredient.map((item) => {
+			if (item.name === name) {
+				//case ingredient already in list
+				inList = true
+			  	const updatedItem = {
+					...item,
+					amount: item.amount + amount,
+			};
+	  
+			  return updatedItem;
+			}
+	  
+			return item;
+		});
+
+		if(!inList) {
+			
+			let newIngredient = 
+			{
+				"name": name,
+				"category": category,
+				"amount": amount,
+				"price": price,
+				"type": type
+			}
+
+			newList.push(newIngredient)
 		}
 
-		return newIngredient
+		setListIngredient(newList);
+
+
+/*
+not working :
+		//let newList = listIngredient
+		let ingredientIndex = listIngredient.findIndex(element => element.name === name)
+
+		if(ingredientIndex !== -1) {
+			//PUT request to change amount
+			listIngredient[ingredientIndex].amount += amount
+			//setListIngredient(newList)
+			//return `${name} already in the list of ingredient. You have ${listIngredient[ingredientIndex].amount} ${name}s left.`
+		} else{
+
+			
+
+			let newIngredient = 
+			{
+				"name": name,
+				"category": category,
+				"amount": amount,
+				"price": price,
+				"type": type
+			} 
+
+			listIngredient.push(newIngredient)
+			//setListIngredient(newList)
+		}*/
 	}
+
+
 
 	//listIngredients : [{ ingredient: name, amount: int }]
 	const addRecipe = (name, listIngredients) => {
@@ -43,7 +98,7 @@ function App() {
 	//region MOCK API ---------------------------------------------------------------------------------------------
 
 	//on recup une liste d'objets a travers un appel a l'API pour recup les elements présents dans le frigo
-	const listIngredient = [
+	const ingredientAPI = [
 		{
 			"name": "Tomate",
 			"category": "Legume",
@@ -51,13 +106,13 @@ function App() {
 			"price": 1.80,
 			"type": "kg"
 		},{
-			"name": "Tomate",
+			"name": "Courgette",
 			"category": "Legume",
 			"amount": 3,
 			"price": 1.80,
 			"type": "kg"
 		},{
-			"name": "Tomate",
+			"name": "Poivron",
 			"category": "Legume",
 			"amount": 3,
 			"price": 1.80,
@@ -71,7 +126,7 @@ function App() {
 		},
 	]
 
-	const listRecipe = [
+	const recipeAPI = [
 		{
 			"name": "Salade de Tomates",
 			"price": calculateRecipePrice([]), 
@@ -120,6 +175,13 @@ function App() {
 		}
 	]
 
+	const [listIngredient, setListIngredient] = useState(ingredientAPI)
+	const [listRecipe, setListRecipe] = useState(recipeAPI)
+
+	useEffect( ()=> {
+		setListIngredient(listIngredient)
+	}, [listIngredient, addIngredient]) 
+
 	//endregion ---------------------------------------------------------------------------------------------------
 
 	//region HTML DISPLAY -----------------------------------------------------------------------------------------
@@ -130,10 +192,11 @@ function App() {
 
 			<div className="main-page">
 				<div className="Ingredients">
-					<FeedIngredient list={listIngredient} />
+					<FeedIngredient list={listIngredient} addIngredient={addIngredient} />
+					<button onClick={() => addIngredient("Pomme", "Fruit", 1, 0.75, "kg")}> Add Ingredient </button>
 				</div>
 				<div className="description">
-					description
+					<Description />
 				</div>
 				<div className="Recipes">
 					<FeedRecipe list={listRecipe} />
