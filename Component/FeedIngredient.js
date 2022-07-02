@@ -49,6 +49,9 @@ export default function FeedIngredient(props) {
 					<Ingredient name={ingredient.name} category={ingredient.category} amount={ingredient.amount} price={ingredient.price} type={ingredient.type} />
 				))}
 			</div>
+			<div className='add-ingredient-btn'>
+				<button onClick={() => props.addIngredient("Pomme", "Fruit", 1, 0.75, "kg")}> Add Ingredient </button>
+			</div> 
 		</div>
   )
 }

@@ -177,10 +177,19 @@ not working :
 
 	const [listIngredient, setListIngredient] = useState(ingredientAPI)
 	const [listRecipe, setListRecipe] = useState(recipeAPI)
+	const [selectedElement, setSelectedElement] = useState({})
 
 	useEffect( ()=> {
 		setListIngredient(listIngredient)
 	}, [listIngredient, addIngredient]) 
+
+	useEffect( () => {
+		setListRecipe(listRecipe)
+	}, [listRecipe, addRecipe])
+	
+	useEffect( () => {
+		setSelectedElement(selectedElement)
+	}, [selectedElement])
 
 	//endregion ---------------------------------------------------------------------------------------------------
 
@@ -193,13 +202,12 @@ not working :
 			<div className="main-page">
 				<div className="Ingredients">
 					<FeedIngredient list={listIngredient} addIngredient={addIngredient} />
-					<button onClick={() => addIngredient("Pomme", "Fruit", 1, 0.75, "kg")}> Add Ingredient </button>
 				</div>
 				<div className="description">
-					<Description />
+					<Description selectedElement={selectedElement} />
 				</div>
 				<div className="Recipes">
-					<FeedRecipe list={listRecipe} />
+					<FeedRecipe list={listRecipe} addRecipe={addRecipe} />
 				</div>
 			</div>
     	</div>
